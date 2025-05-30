@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EnKit - Phần mềm chuyên nghiệp{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{% url 'home' %}">EnKit</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    {% block nav_links %}
+                    <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li><a href="{% url 'home' %}#software1">Sản phẩm</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    {% endblock %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EnKit Software</h3>
+                    <p>Giải pháp phần mềm chuyên nghiệp cho doanh nghiệp hiện đại</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Sản phẩm</h4>
+                    <ul>
+                        <li><a href="#software1">AutoCAD Tools</a></li>
+                        <li><a href="#software2">SAP Solutions</a></li>
+                        <li><a href="#software3">Design Pro</a></li>
+                        <li><a href="#software4">Data Analytics</a></li>
+                        <li><a href="#software5">Project Manager</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Tài liệu</a></li>
+                        <li><a href="#">Video hướng dẫn</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Báo lỗi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="contact">
+                    <h4>Liên hệ</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +84 123 456 789</p>
+                        <p><i class="fas fa-envelope"></i> info@enkit.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> TP. Hồ Chí Minh, Việt Nam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EnKit Software. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

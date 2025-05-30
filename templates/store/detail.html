@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ software.name }} - EnKit{% endblock %}
+
+{% block nav_links %}
+<li><a href="{% url 'home' %}">Trang chủ</a></li>
+<li><a href="#features">Tính năng</a></li>
+<li><a href="#requirements">Yêu cầu</a></li>
+<li><a href="#download">Tải về</a></li>
+{% endblock %}
+
+{% block content %}
+
+	<section class="detail-hero gradient-bg">
+		<div class="container">
+			<div class="detail-hero-content">
+				<h1>{{ software.name }}</h1>
+				<p>{{ software.description }}</p>
+				<div class="hero-buttons">
+					{% if software.demo_link %}
+					<a href="{{ software.demo_link }}" class="cta-button">
+						<i class="fas fa-play"></i> Demo trực tuyến
+					</a>
+					{% endif %}
+					{% if software.download_link %}
+					<a href="{{ software.download_link }}" class="cta-button secondary">
+						<i class="fas fa-download"></i> Tải về
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="features" class="detail-section">
+		<div class="container">
+			<h2>Tính năng nổi bật</h2>
+			<div class="features-grid">
+				{% for feature in software.get_features_list %}
+					{% if feature.strip %}
+					<div class="feature-card fade-in">
+						<i class="fas fa-check-circle"></i>
+						<p>{{ feature|safe }}</p>
+					</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section id="requirements" class="detail-section bg-alt">
+		<div class="container">
+			<h2>Yêu cầu hệ thống</h2>
+			<div class="requirements-box">
+				{{ software.requirements|linebreaksbr }}
+			</div>
+		</div>
+	</section>
+
+	<section id="download" class="detail-section">
+		<div class="container">
+			<div class="download-card">
+				<h2>Tải xuống {{ software.name }}</h2>
+				<div class="price-display">${{ software.price }}</div>
+				{% if software.download_link %}
+				<a href="{{ software.download_link }}" class="download-btn">
+					<i class="fas fa-download"></i> Tải ngay
+				</a>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
